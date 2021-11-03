@@ -1,3 +1,4 @@
+const { time } = require("console");
 const net = require("net");
 const connect = function () {
   const conn = net.createConnection({
@@ -10,7 +11,27 @@ const connect = function () {
   conn.on('connect', () => {
     console.log('Successfully connected to the game server!');
     let name = 'SDC';
-    conn.write(`${name}: Greetings!`);
+    let timer = 0;
+    const up = () => conn.write('Move: up');
+    const down = () => conn.write('Move: down');
+    const left = () => conn.write('Move: left');
+    const right = () => conn.write('Move: right');
+    conn.write(`Name: ${name}`);
+    // for (timer = 0; timer < 5000; timer += 100) {
+    //   setTimeout(() => {
+    //     up();
+    //   }, timer);
+    //   timer += 100;
+    //   setTimeout(() => {
+    //     left();
+    //   }, timer);
+    //   timer += 100;
+    // }
+    // for (timer = 5000; timer < 10000; timer += 100) {
+    //   setTimeout(() => {
+    //     right();
+    //   }, timer);
+    // }
   })
   conn.on('data', (data) => {
     // console.log("Message from server received!");
