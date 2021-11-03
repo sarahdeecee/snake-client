@@ -12,28 +12,21 @@ const setupInput = function (conn) {
     const down = () => conn.write('Move: down');
     const left = () => conn.write('Move: left');
     const right = () => conn.write('Move: right');
-    
+    const hello = () => conn.write('Say: Hey there!');
+    const gotcha = () => conn.write('Say: Gotcha!');
+    const move = () => conn.write('Say: Get outta the way!');
     stdin.on('data', (key) => {
       // process.stdout.write('.');
       if (key === '\u0003') {
         process.exit();
       }
-      if (key === 'w') {
-        up();
-        console.log('up');
-      }
-      if (key === 's') {
-        down();
-        console.log('down');
-      }
-      if (key === 'a') {
-        left();
-        console.log('left');
-      }
-      if (key === 'd') {
-        right();
-        console.log('right');
-      }
+      (key === 'w') ? up() : null;
+      (key === 's') ? down() : null;
+      (key === 'a') ? left() : null;
+      (key === 'd') ? right() : null;
+      (key === 'h') ? hello() : null;
+      (key === 'g') ? gotcha() : null;
+      (key === 'j') ? move() : null;
     });
   };
   stdin.on("data", handleUserInput);
