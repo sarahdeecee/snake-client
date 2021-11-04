@@ -6,8 +6,6 @@ const setupInput = function (conn) {
   stdin.setRawMode(true);
   stdin.setEncoding("utf8");
   const handleUserInput = function () {
-    const stdin = process.stdin;
-    
     const up = () => conn.write('Move: up');
     const down = () => conn.write('Move: down');
     const left = () => conn.write('Move: left');
